@@ -930,29 +930,3 @@ class DropboxClient
     }
 
 }
-
-class DropboxException extends Exception
-{
-    private $tag;
-
-    public function __construct($resp = null, $context = null)
-    {
-        if (is_null($resp)) {
-            $el = error_get_last();
-            $this->message = $el['message'];
-            $this->file = $el['file'];
-            $this->line = $el['line'];
-        } elseif (is_object($resp) && isset($resp->error)) {
-            $this->message = empty($resp->error_description) ? (json_encode($resp) . ($context ? ", in $context" : "")) : $resp->error_description;
-            /** @noinspection PhpUndefinedFieldInspection */
-            $this->tag = is_object($resp->error) ? $resp->error->{'.tag'} : $resp->error;
-        } else {
-            $this->message = $resp . ($context ? ", in $context" : "");
-        }
-    }
-
-    public function getTag()
-    {
-        return $this->tag;
-    }
-}
