@@ -31,20 +31,13 @@ if ($bearer_token) {
 
 $token = $bearer_token['t'];
 $dropbox = new Dropbox\Dropbox($token);
-$files = $dropbox->files->list_folder('/example');
-/*foreach ($denemeFiles['entries'] as $denemeFile) {
-    $dropbox->files->download($denemeFile['path_lower'], "./download/".$denemeFile['name']);
-    $dropbox->files->delete($denemeFile['path_lower']);
-}*/
-// Initialize Dropbox client
 
-//$dropbox->files->upload('/target/file.txt', '/path-to-upload-from/uploadthisfile.txt', "overwrite");
-
+// Download a file
+$dropbox->files->download('/target/file.txt', '/path-to-download-to/downloadedfile.txt');
+// Delete a file
+$dropbox->files->delete('/target/file.txt', '/path-to-download-to/downloadedfile.txt');
+// Upload a file, overwriting if the file already exists in Dropbox
+$dropbox->files->upload('/target/file.txt', '/path-to-upload-from/uploadthisfile.txt', "overwrite");
 // List all the files in a folder
-echo '<pre>';
-print_r($dropbox->files->list_folder('/example'));
-echo '</pre>';
-
-
-/***Documentation will be added/updated in the future***/
+$dropbox->files->list_folder('/example_path');
 ?>
