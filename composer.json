@@ -1,0 +1,14 @@
+{
+    "name": "tkorkmazer/dropbox-client",
+    "license": "MIT",
+    "description": "A Dropbox SDK to work with the v2 API",
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-4" : {
+            "Dropbox\\": "sdk/",
+            "DropboxClient\\": "client/"
+        }
+    }
+}
