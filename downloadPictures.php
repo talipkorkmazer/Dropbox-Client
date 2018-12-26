@@ -1,13 +1,9 @@
 <?php
-set_time_limit(0);
-
 // Include Composer libraries
 require 'vendor/autoload.php';
 
 $tokenLib = new DropboxClient\tokenLib;
 $tokenLib->init();
-
-$root = dirname((__FILE__));
 
 $dropbox = new DropboxClient\DropboxClient(array(
     'app_key' => 'APP_KEY',
