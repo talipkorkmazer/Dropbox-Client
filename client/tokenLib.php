@@ -6,6 +6,7 @@ class tokenLib
     {
         error_reporting(E_ALL);
         $this->enableImplicitFlush();
+        $this->mkdirDownload();
     }
 
 
@@ -51,4 +52,3 @@ class tokenLib
     }
 
 }
-
